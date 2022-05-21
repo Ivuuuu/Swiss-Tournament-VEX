@@ -18,18 +18,32 @@ public class Driver : MonoBehaviour
 
         for (int i = 0; i < fileLines.Count; i++)
         {
-            teamList[i] = new Team_Template();
+            teamList[i] = new Team_Template();  // fills the team array
             teamList[i].teamNum = fileLines[i];
         }
     }
-    // string team name == (data from tct file)
 
     private void Start()
     {
         fillTeamArray();
         Helper_Functions.dumpTeamList(teamList);
+        generateFirstRound();
+        Helper_Functions.dumpTeamList(teamList);
     }
-    // call generatefirstRound()
+
+    // randomly generate the first round (bc no data)
+    private void generateFirstRound()
+    {
+        int maxNum = teamList.Length;
+        List<int> randomList = Helper_Functions.GenerateRandomList(maxNum);
+
+        Team_Template[] temp = teamList;
+        for (int i = 0; i < maxNum; i++)
+        {
+            temp[i] = teamList[randomList[i]];
+        }
+        teamList = temp;
+    }
 
     // void generateSchedule
     // generate a match for each team, and then display on screen
