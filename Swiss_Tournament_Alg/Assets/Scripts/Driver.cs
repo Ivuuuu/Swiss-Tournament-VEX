@@ -1,18 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
+using System.Linq;
 
 public class Driver : MonoBehaviour
 {
     // VARIABLES
-    // list of team templates that will hold all teams
+    Team_Template[] teamList;   // holds all team objects
 
-    // void fillTeamList()
     // read data from a text file, and input information abt the teams
+    void fillTeamArray()
+    {
+        string path = "Assets/INPUT/TeamList.txt";
+        List<string> fileLines = File.ReadLines(path).ToList();
+        teamList = new Team_Template[fileLines.Count];
+
+        for (int i = 0; i < fileLines.Count; i++)
+        {
+            teamList[i] = new Team_Template();
+            teamList[i].teamNum = fileLines[i];
+        }
+    }
     // string team name == (data from tct file)
 
-    // Start()
-    // call fillTeam()
+    private void Start()
+    {
+        fillTeamArray();
+        Helper_Functions.dumpTeamList(teamList);
+    }
     // call generatefirstRound()
 
     // void generateSchedule

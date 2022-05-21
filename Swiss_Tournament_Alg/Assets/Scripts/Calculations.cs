@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Calculations : MonoBehaviour
 {
-    // List<> (List<> t)
-    // sort the List from highest to lowest descending
+    // array[] sortTeamsLowToHigh (array[] tL)
+    // sort the List from low to high ascending
     // from most losses to least
     // if 2 teams have the same # of wins/losses
         // go to Auton WPS
