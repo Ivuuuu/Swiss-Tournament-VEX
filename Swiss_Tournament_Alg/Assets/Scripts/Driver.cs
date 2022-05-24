@@ -34,22 +34,20 @@ public class Driver : MonoBehaviour
     // randomly generate the first round (bc no data)
     private void generateFirstRound()
     {
-        int maxNum = teamList.Length;
-        List<int> randomList = Helper_Functions.GenerateRandomList(maxNum);
-
-        Team_Template[] temp = teamList;
-        for (int i = 0; i < maxNum; i++)
+        for (var i = teamList.Length - 1; i > 0; i--)
         {
-            temp[i] = teamList[randomList[i]];
+            var r = Random.Range(0, i);
+            var tmp = teamList[i];
+            teamList[i] = teamList[r];
+            teamList[r] = tmp;
         }
-        teamList = temp;
     }
 
     // void generateSchedule
     // generate a match for each team, and then display on screen
     // sortList()
     // displayMatches()
-        // take 1 & 3, them 2 & 4 to make a match
+    // take 1 & 3, them 2 & 4 to make a match
 
     // generateFirstRound()
     // displayMatches()
