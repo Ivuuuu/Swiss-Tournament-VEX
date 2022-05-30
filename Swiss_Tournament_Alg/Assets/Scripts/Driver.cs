@@ -8,6 +8,7 @@ public class Driver : MonoBehaviour
 {
     // VARIABLES
     Team_Template[] teamList;   // holds all team objects
+    public Text_Manager textManager;    // refrence to text manager class
 
     // read data from a text file, and input information abt the teams
     void fillTeamArray()
@@ -26,6 +27,7 @@ public class Driver : MonoBehaviour
     private void Start()
     {
         fillTeamArray();
+        textManager.displayAllTeams(teamList);
         Helper_Functions.dumpTeamList(teamList);
         generateFirstRound();
         Helper_Functions.dumpTeamList(teamList);
